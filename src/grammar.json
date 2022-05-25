@@ -9,6 +9,20 @@
         "name": "statement"
       }
     },
+    "ws": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[ \\t]+"
+      }
+    },
+    "newline": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\r?\\n"
+      }
+    },
     "_literal": {
       "type": "CHOICE",
       "members": [
@@ -50,11 +64,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string_literal"
+          "name": "text_block"
         },
         {
           "type": "SYMBOL",
-          "name": "text_block"
+          "name": "string_literal"
         },
         {
           "type": "SYMBOL",
@@ -6968,8 +6982,12 @@
       "name": "block_comment"
     },
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "SYMBOL",
+      "name": "ws"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "newline"
     }
   ],
   "conflicts": [

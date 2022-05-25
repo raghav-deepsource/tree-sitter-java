@@ -1,5 +1,7 @@
 const DIGITS = token(sep1(/[0-9]+/, /_+/))
 const HEX_DIGITS = token(sep1(/[A-Fa-f0-9]+/, '_'))
+const WS = token(/[ \t]+/)
+const NEWLINE = token(choice(/\r\n/, /\n/))
 const PREC = {
   // https://introcs.cs.princeton.edu/java/11precedence/
   COMMENT: 0,      // //  /*  */
@@ -33,7 +35,8 @@ module.exports = grammar({
   extras: $ => [
     $.line_comment,
     $.block_comment,
-    /\s/
+    $.ws,
+    $.newline
   ],
 
   supertypes: $ => [
@@ -75,6 +78,10 @@ module.exports = grammar({
   rules: {
     program: $ => repeat($.statement),
 
+    ws: $ => token(/[ \t]+/),
+
+    newline: $ => token(/\r?\n/),
+
     // Literals
 
     _literal: $ => choice(
@@ -87,8 +94,8 @@ module.exports = grammar({
       $.true,
       $.false,
       $.character_literal,
-      $.string_literal,
       $.text_block,
+      $.string_literal,
       $.null_literal
     ),
 
