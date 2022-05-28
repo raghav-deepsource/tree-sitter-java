@@ -645,6 +645,7 @@ module.exports = grammar({
       $.interface_declaration,
       $.annotation_type_declaration,
       $.enum_declaration,
+      $.record_declaration,
     )),
 
     module_declaration: $ => seq(
