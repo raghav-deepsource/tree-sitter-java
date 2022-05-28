@@ -392,7 +392,7 @@
           "named": true
         },
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -400,36 +400,6 @@
           "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "annotation",
-    "named": true,
-    "fields": {
-      "arguments": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "annotation_argument_list",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "scoped_identifier",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -441,7 +411,7 @@
       "required": false,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -520,9 +490,13 @@
       }
     },
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
+        {
+          "type": "annotation_decl_keyword",
+          "named": true
+        },
         {
           "type": "modifiers",
           "named": true
@@ -569,7 +543,7 @@
         "required": false,
         "types": [
           {
-            "type": "annotation",
+            "type": "annotation_with_args",
             "named": true
           },
           {
@@ -596,6 +570,36 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "annotation_with_args",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "annotation_argument_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "scoped_identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1358,7 +1362,7 @@
       "required": false,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -1377,7 +1381,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -1426,7 +1430,7 @@
       "required": false,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -1463,7 +1467,7 @@
         "required": true,
         "types": [
           {
-            "type": "annotation",
+            "type": "annotation_with_args",
             "named": true
           },
           {
@@ -2449,7 +2453,7 @@
       "required": false,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -2563,7 +2567,7 @@
       "required": false,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -2622,7 +2626,7 @@
       "required": false,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -2725,7 +2729,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -2849,7 +2853,7 @@
           "named": true
         },
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -3081,7 +3085,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -3497,7 +3501,7 @@
       "required": true,
       "types": [
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -3682,7 +3686,7 @@
           "named": true
         },
         {
-          "type": "annotation",
+          "type": "annotation_with_args",
           "named": true
         },
         {
@@ -3872,10 +3876,6 @@
     "named": false
   },
   {
-    "type": "@interface",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -3894,6 +3894,10 @@
   {
     "type": "abstract",
     "named": false
+  },
+  {
+    "type": "annotation_decl_keyword",
+    "named": true
   },
   {
     "type": "assert",

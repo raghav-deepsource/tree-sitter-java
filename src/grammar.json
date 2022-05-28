@@ -4153,7 +4153,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "annotation"
+          "name": "annotation_with_args"
         }
       ]
     },
@@ -4174,7 +4174,7 @@
         }
       ]
     },
-    "annotation": {
+    "annotation_with_args": {
       "type": "SEQ",
       "members": [
         {
@@ -5776,8 +5776,8 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "@interface"
+          "type": "SYMBOL",
+          "name": "annotation_decl_keyword"
         },
         {
           "type": "FIELD",
@@ -6905,6 +6905,13 @@
       },
       "named": true,
       "value": "identifier"
+    },
+    "annotation_decl_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": "@interface"
+      }
     },
     "this": {
       "type": "STRING",
