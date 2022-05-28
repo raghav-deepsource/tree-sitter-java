@@ -593,7 +593,7 @@ module.exports = grammar({
 
     _annotation: $ => choice(
       $.marker_annotation,
-      $.annotation
+      $.annotation_with_args
     ),
 
     marker_annotation: $ => seq(
@@ -601,7 +601,7 @@ module.exports = grammar({
       field('name', $._name)
     ),
 
-    annotation: $ => seq(
+    annotation_with_args: $ => seq(
       '@',
       field('name', $._name),
       field('arguments', $.annotation_argument_list)
@@ -916,7 +916,7 @@ module.exports = grammar({
 
     annotation_type_declaration: $ => seq(
       optional($.modifiers),
-      '@interface',
+      $.annotation_decl_keyword,
       field('name', $.identifier),
       field('body', $.annotation_type_body)
     ),
@@ -1141,6 +1141,8 @@ module.exports = grammar({
       'open',
       'module'
     ), $.identifier),
+
+    annotation_decl_keyword: $ => token('@interface'),
 
     this: $ => 'this',
 
