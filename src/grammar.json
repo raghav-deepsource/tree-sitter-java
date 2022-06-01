@@ -9,14 +9,14 @@
         "name": "statement"
       }
     },
-    "ws": {
+    "_ws": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
         "value": "[ \\t]+"
       }
     },
-    "newline": {
+    "_newline": {
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
@@ -2391,6 +2391,13 @@
             "value": "new"
           },
           {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_annotation"
+            }
+          },
+          {
             "type": "FIELD",
             "name": "type",
             "content": {
@@ -2567,6 +2574,13 @@
                   "type": "BLANK"
                 }
               ]
+            }
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_annotation"
             }
           },
           {
@@ -5819,6 +5833,10 @@
               },
               {
                 "type": "SYMBOL",
+                "name": "enum_declaration"
+              },
+              {
+                "type": "SYMBOL",
                 "name": "class_declaration"
               },
               {
@@ -6994,11 +7012,11 @@
     },
     {
       "type": "SYMBOL",
-      "name": "ws"
+      "name": "_ws"
     },
     {
       "type": "SYMBOL",
-      "name": "newline"
+      "name": "_newline"
     }
   ],
   "conflicts": [

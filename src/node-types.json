@@ -458,6 +458,10 @@
           "named": true
         },
         {
+          "type": "enum_declaration",
+          "named": true
+        },
+        {
           "type": "interface_declaration",
           "named": true
         }
@@ -681,6 +685,20 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "annotation_with_args",
+          "named": true
+        },
+        {
+          "type": "marker_annotation",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2676,7 +2694,15 @@
       "required": false,
       "types": [
         {
+          "type": "annotation_with_args",
+          "named": true
+        },
+        {
           "type": "class_body",
+          "named": true
+        },
+        {
+          "type": "marker_annotation",
           "named": true
         },
         {
@@ -4060,10 +4086,6 @@
     "named": false
   },
   {
-    "type": "newline",
-    "named": true
-  },
-  {
     "type": "non-sealed",
     "named": false
   },
@@ -4210,10 +4232,6 @@
   {
     "type": "with",
     "named": false
-  },
-  {
-    "type": "ws",
-    "named": true
   },
   {
     "type": "yield",
