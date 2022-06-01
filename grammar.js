@@ -1,7 +1,5 @@
 const DIGITS = token(sep1(/[0-9]+/, /_+/))
 const HEX_DIGITS = token(sep1(/[A-Fa-f0-9]+/, '_'))
-const WS = token(/[ \t]+/)
-const NEWLINE = token(choice(/\r\n/, /\n/))
 const PREC = {
   // https://introcs.cs.princeton.edu/java/11precedence/
   COMMENT: 0,      // //  /*  */
@@ -35,8 +33,8 @@ module.exports = grammar({
   extras: $ => [
     $.line_comment,
     $.block_comment,
-    $.ws,
-    $.newline
+    $._ws,
+    $._newline
   ],
 
   supertypes: $ => [
@@ -78,9 +76,9 @@ module.exports = grammar({
   rules: {
     program: $ => repeat($.statement),
 
-    ws: $ => token(/[ \t]+/),
+    _ws: $ => token(/[ \t]+/),
 
-    newline: $ => token(/\r?\n/),
+    _newline: $ => token(/\r?\n/),
 
     // Literals
 
@@ -296,6 +294,7 @@ module.exports = grammar({
 
     array_creation_expression: $ => prec.right(seq(
       'new',
+      repeat($._annotation),
       field('type', $._simple_type),
       choice(
         seq(
@@ -323,6 +322,7 @@ module.exports = grammar({
     _unqualified_object_creation_expression: $ => prec.right(seq(
       'new',
       field('type_arguments', optional($.type_arguments)),
+      repeat($._annotation),
       field('type', $._simple_type),
       field('arguments', $.argument_list),
       optional($.class_body)
@@ -925,6 +925,7 @@ module.exports = grammar({
       '{', repeat(choice(
         $.annotation_type_element_declaration,
         $.constant_declaration,
+        $.enum_declaration,
         $.class_declaration,
         $.interface_declaration,
         $.annotation_type_declaration

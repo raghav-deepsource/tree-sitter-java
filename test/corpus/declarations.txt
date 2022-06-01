@@ -96,7 +96,7 @@ module com.foo { }
 
 (program
   (module_declaration
-    (annotation
+    (annotation_with_args
       (identifier)
       (annotation_argument_list
         (element_value_pair (identifier) (decimal_integer_literal))
@@ -136,7 +136,7 @@ module com.foo {}
 
 (program
   (module_declaration
-    (annotation
+    (annotation_with_args
       (identifier)
       (annotation_argument_list (string_literal)))
     (scoped_identifier
@@ -398,7 +398,21 @@ interface with annotation type declaration
 ---
 
 (program
-  (annotation_type_declaration (identifier) (annotation_type_body)))
+  (annotation_type_declaration (annotation_decl_keyword) (identifier) (annotation_type_body)))
+
+================================
+annotation type with inner enum
+================================
+
+@interface EditModifiers {
+  enum EditKind {}
+}
+
+---
+
+(program
+  (annotation_type_declaration (annotation_decl_keyword) (identifier) (annotation_type_body
+    (enum_declaration (identifier) (enum_body)))))
 
 ===================
 method declaration

@@ -380,13 +380,13 @@ class Duck {
 (program
   (class_declaration
     (modifiers
-      (annotation
+      (annotation_with_args
         (identifier)
         (annotation_argument_list
           (element_value_pair
             (identifier)
             (string_literal))))
-      (annotation
+      (annotation_with_args
         (identifier)
         (annotation_argument_list
           (element_value_pair
@@ -436,8 +436,8 @@ class Quack {
 (program
   (class_declaration
     (modifiers
-      (annotation (identifier) (annotation_argument_list (field_access (identifier) (identifier))))
-      (annotation (identifier) (annotation_argument_list (string_literal))))
+      (annotation_with_args (identifier) (annotation_argument_list (field_access (identifier) (identifier))))
+      (annotation_with_args (identifier) (annotation_argument_list (string_literal))))
     (identifier)
     (class_body)))
 
@@ -1074,3 +1074,24 @@ $cibleVisée2 = 2;
     (assignment_expression
       (identifier)
       (decimal_integer_literal))))
+
+===========================================
+array and object creation with annotations
+===========================================
+
+new @Nullable Object[size];
+new @Nullable Object();
+
+---
+
+(program
+  (expression_statement
+    (array_creation_expression
+      (marker_annotation name: (identifier))
+      type: (type_identifier)
+      dimensions: (dimensions_expr (identifier))))
+  (expression_statement
+    (object_creation_expression
+      (marker_annotation name: (identifier))
+      type: (type_identifier)
+      arguments: (argument_list))))

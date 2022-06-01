@@ -8,7 +8,7 @@
 
 ; Annotations
 
-(annotation
+(annotation_with_args
   name: (identifier) @attribute)
 (marker_annotation
   name: (identifier) @attribute)
