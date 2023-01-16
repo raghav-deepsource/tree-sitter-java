@@ -33,7 +33,8 @@ module.exports = grammar({
   extras: $ => [
     $.line_comment,
     $.block_comment,
-    /\s/
+    $._ws,
+    $._newline
   ],
 
   supertypes: $ => [
@@ -78,6 +79,9 @@ module.exports = grammar({
   rules: {
     program: $ => repeat($.statement),
 
+    _ws: $ => token(/[ \t]+/),
+    _newline: $ => token(/\r|\n|(\r\n)/),
+
     // Literals
 
     _literal: $ => choice(
@@ -92,6 +96,7 @@ module.exports = grammar({
       $.character_literal,
       $.string_literal,
       $.text_block,
+      $.string_literal,
       $.null_literal
     ),
 
@@ -322,6 +327,7 @@ module.exports = grammar({
     _unqualified_object_creation_expression: $ => prec.right(seq(
       'new',
       field('type_arguments', optional($.type_arguments)),
+      repeat($._annotation),
       field('type', $._simple_type),
       field('arguments', $.argument_list),
       optional($.class_body)
@@ -918,7 +924,7 @@ module.exports = grammar({
 
     annotation_type_declaration: $ => seq(
       optional($.modifiers),
-      '@interface',
+      $.kw_annotation,
       field('name', $.identifier),
       field('body', $.annotation_type_body)
     ),
@@ -1152,6 +1158,8 @@ module.exports = grammar({
       'module',
       'record'
     ), $.identifier),
+
+    kw_annotation: $ => '@interface',
 
     this: $ => 'this',
 

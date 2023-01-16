@@ -9,6 +9,20 @@
         "name": "statement"
       }
     },
+    "_ws": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[ \\t]+"
+      }
+    },
+    "_newline": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\r|\\n|(\\r\\n)"
+      }
+    },
     "_literal": {
       "type": "CHOICE",
       "members": [
@@ -55,6 +69,10 @@
         {
           "type": "SYMBOL",
           "name": "text_block"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_literal"
         },
         {
           "type": "SYMBOL",
@@ -2619,6 +2637,13 @@
                   "type": "BLANK"
                 }
               ]
+            }
+          },
+          {
+            "type": "REPEAT",
+            "content": {
+              "type": "SYMBOL",
+              "name": "_annotation"
             }
           },
           {
@@ -5868,8 +5893,8 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "@interface"
+          "type": "SYMBOL",
+          "name": "kw_annotation"
         },
         {
           "type": "FIELD",
@@ -7043,6 +7068,10 @@
       "named": true,
       "value": "identifier"
     },
+    "kw_annotation": {
+      "type": "STRING",
+      "value": "@interface"
+    },
     "this": {
       "type": "STRING",
       "value": "this"
@@ -7123,8 +7152,12 @@
       "name": "block_comment"
     },
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "SYMBOL",
+      "name": "_ws"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_newline"
     }
   ],
   "conflicts": [

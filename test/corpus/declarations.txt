@@ -398,7 +398,21 @@ interface with annotation type declaration
 ---
 
 (program
-  (annotation_type_declaration (identifier) (annotation_type_body)))
+  (annotation_type_declaration (kw_annotation) (identifier) (annotation_type_body)))
+
+================================
+annotation type with inner enum
+================================
+
+@interface EditModifiers {
+  enum EditKind {}
+}
+
+---
+
+(program
+  (annotation_type_declaration (kw_annotation) (identifier) (annotation_type_body
+    (enum_declaration (identifier) (enum_body)))))
 
 ===================
 method declaration
@@ -595,7 +609,6 @@ enum HandSign {
       (enum_constant name: (identifier))
       (enum_constant name: (identifier)))))
 
-
 =================
 enum declaration inside an interface
 =================
@@ -611,6 +624,7 @@ public @interface Foo {
     (program
       (annotation_type_declaration
         (modifiers)
+        (kw_annotation)
         name: (identifier)
         body: (annotation_type_body
           (enum_declaration

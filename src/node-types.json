@@ -524,9 +524,13 @@
       }
     },
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
+        {
+          "type": "kw_annotation",
+          "named": true
+        },
         {
           "type": "modifiers",
           "named": true
@@ -2748,7 +2752,15 @@
       "required": false,
       "types": [
         {
+          "type": "annotation",
+          "named": true
+        },
+        {
           "type": "class_body",
+          "named": true
+        },
+        {
+          "type": "marker_annotation",
           "named": true
         },
         {
@@ -3968,10 +3980,6 @@
     "named": false
   },
   {
-    "type": "@interface",
-    "named": false
-  },
-  {
     "type": "[",
     "named": false
   },
@@ -4130,6 +4138,10 @@
   {
     "type": "interface",
     "named": false
+  },
+  {
+    "type": "kw_annotation",
+    "named": true
   },
   {
     "type": "line_comment",
