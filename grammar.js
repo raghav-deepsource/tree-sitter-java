@@ -33,8 +33,8 @@ module.exports = grammar({
   extras: $ => [
     $.line_comment,
     $.block_comment,
-    $._ws,
-    $._newline
+    $.ws,
+    $.newline
   ],
 
   supertypes: $ => [
@@ -79,8 +79,8 @@ module.exports = grammar({
   rules: {
     program: $ => repeat($.statement),
 
-    _ws: $ => token(/[ \t]+/),
-    _newline: $ => token(/\r|\n|(\r\n)/),
+    ws: $ => token(/[ \t]+/),
+    newline: $ => token(/\r|\n|(\r\n)/),
 
     // Literals
 
